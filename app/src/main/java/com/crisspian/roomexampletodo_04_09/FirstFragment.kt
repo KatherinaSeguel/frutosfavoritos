@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment() , TaskAdapter.PassTheData {
 
     lateinit var viewModel: TaskViewModel
 
@@ -40,33 +41,27 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val task = Task(2,"Algo de prueba 10", false)
-        val task1 = Task(3,"Algo de prueba 10", true)
-        //val task01 = Task(1,"Algo de prueba 2", false)
-        //val task03 = Task(2,"Algo de prueba 3", false)
-        viewModel.insertTask(task1)
-        //viewModel.insertTask(task01)
-        //viewModel.insertTask(task03)
-        // Escuchar liveData del ViewModel
-        // Este borra todos los task
-    //    viewModel.deleteAllTask()
-
         // instanciar el elemento visual RV
         val mRecyclerView = recyclerView
         //Instanciar el objeto de la clase adapter
-        val mAdapter = TaskAdapter()
+        val mAdapter = TaskAdapter(this)
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(context)
-
-
-
+        //Observando LiveData del viewModel
         viewModel.allTask.observe(viewLifecycleOwner, Observer {
             Log.d("OBJETO", it.toString())
+            //Este hace update al adapter.
             mAdapter.updateDataList(it)
         })
 
 
+        fab.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
 
+    }
 
+    override fun passTheData(mtask: Task) {
+        Toast.makeText(context, mtask.task, Toast.LENGTH_LONG).show()
     }
 }

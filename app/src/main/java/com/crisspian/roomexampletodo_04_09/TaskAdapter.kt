@@ -8,20 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.crisspian.roomexampletodo_04_09.database.Task
 import kotlinx.android.synthetic.main.task_item_list.view.*
 
-class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(var mPassTheData: PassTheData) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private var dataList = emptyList<Task>()
-
     // funcion que va actualiza el listado del adapter.
     fun updateDataList(mDataList: List<Task>){
         dataList = mDataList
         notifyDataSetChanged()
     }
 
-    inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val taskText = itemView.taskTv
         val checkTask = itemView.checkBoxTask
         val idText = itemView.idTv
+        val itemView = itemView.setOnClickListener(this)
+
+        override fun onClick(p0: View?) {
+            //pasa el elemento encontrado por posicion del adapter
+            mPassTheData.passTheData(dataList[adapterPosition])
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -37,5 +42,10 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     }
 
     override fun getItemCount() = dataList.size
+
+    //Esta interface va a pasar el dato Al primerFragmento
+    interface PassTheData{
+        fun passTheData(mtask: Task)
+    }
 
 }
