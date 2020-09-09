@@ -1,14 +1,22 @@
 package com.crisspian.roomexampletodo_04_09
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.crisspian.roomexampletodo_04_09.database.Task
 import kotlinx.android.synthetic.main.task_item_list.view.*
 
-class TaskAdapter(val list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
+    private var dataList = emptyList<Task>()
+
+    // funcion que va actualiza el listado del adapter.
+    fun updateDataList(mDataList: List<Task>){
+        dataList = mDataList
+        notifyDataSetChanged()
+    }
 
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val taskText = itemView.taskTv
@@ -17,15 +25,17 @@ class TaskAdapter(val list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
-        TODO("Not yet implemented")
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task_item_list, parent, false)
+        return TaskViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val mTask: Task = dataList[position]
+        holder.taskText.text = mTask.task
+        holder.checkTask.isChecked = mTask.completeTask
+        holder.idText.text = mTask.id.toString()
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = dataList.size
 
 }
