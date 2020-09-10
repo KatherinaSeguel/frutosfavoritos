@@ -28,5 +28,14 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteAll()
     }
 
+    // Este metodo sera observado por la vista cuando le pase el ID
+    fun getOneTaskByID(id : Int) : LiveData<Task> {
+         return repository.getOneTaskByID(id)
+    }
+
+    // Este metodo hace update
+    fun updateTask(mTask: Task) = viewModelScope.launch {
+        repository.updateTask(mTask)
+    }
 
 }

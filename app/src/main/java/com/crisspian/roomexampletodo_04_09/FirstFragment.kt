@@ -60,8 +60,11 @@ class FirstFragment : Fragment() , TaskAdapter.PassTheData {
         }
 
     }
-
+    // Esta es la inteface que esta en el adapter que nosotros creamos trae el objeto seleccionado
     override fun passTheData(mtask: Task) {
-        Toast.makeText(context, mtask.task, Toast.LENGTH_LONG).show()
+        val mBundle = Bundle()
+        mBundle.putInt("id", mtask.id)
+        Toast.makeText(context, mtask.id.toString(), Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle)
     }
 }

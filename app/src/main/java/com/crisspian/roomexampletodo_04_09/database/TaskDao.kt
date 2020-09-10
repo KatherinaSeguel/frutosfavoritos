@@ -16,7 +16,7 @@ interface TaskDao {
     fun insertMultipleTask(mListTask: List<Task>)
 
     @Update
-    fun updateOneTask(mTask: Task)
+    suspend fun updateOneTask(mTask: Task)
 
     @Delete
     fun deleteOneTask(mTask: Task)
@@ -27,7 +27,7 @@ interface TaskDao {
 
     // Busca un elemento por ID
     @Query("SELECT * FROM table_task WHERE id =:mId")
-    fun getOneTaskByID(mId: Int): Task
+    fun getOneTaskByID(mId: Int): LiveData<Task>
 
     @Query("DELETE  FROM table_task")
     suspend fun deleteAllTask()
