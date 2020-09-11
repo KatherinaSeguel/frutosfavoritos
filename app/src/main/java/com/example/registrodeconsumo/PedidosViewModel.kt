@@ -3,8 +3,10 @@ package com.example.registrodeconsumo
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.example.registrodeconsumo.database.Pedidos
 import com.example.registrodeconsumo.database.PedidosDatabase
+import kotlinx.coroutines.launch
 
 
 //application constructor de la clase que viene de la clase AndroidViewModel y lo alimenta
@@ -20,4 +22,11 @@ class PedidosViewModel(application: Application) : AndroidViewModel(application)
         allPedidos=mrepository.listAllPedidos
     }
 
+
+ fun insertPedidos(mpedidos: Pedidos) = viewModelScope.launch {
+     mrepository.insertPedidos(mpedidos) }
+
+    fun deleteAllPedidos() = viewModelScope.launch {
+        mrepository.deleteALL()
+    }
 }

@@ -15,8 +15,13 @@ class PedidosRepository (private val mPedidosDao:PedidosDao){
 
     //va al DAO y trae el objeto encontrado por ID envuelto en LiveData
 
-    fun getOneTaskByID(id : Int): LiveData<Pedidos> {
-        return mPedidosDao.getOnePedidosByID(id)
+   // fun getOneTaskByID(id : Int): LiveData<Pedidos> {
+   //     return mPedidosDao.getOnePedidosByID(id)
+   // }
+
+    //Esta función Delete la tabla entera
+    suspend fun deleteALL(){
+        mPedidosDao.deleteALLPedidos()
     }
-    
+
 }
