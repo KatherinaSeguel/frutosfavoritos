@@ -6,7 +6,7 @@ import com.example.registrodeconsumo.database.Pedidos
 
 @Dao
 interface PedidosDao {
-
+//Insertar un objeto en la tabla utilizando suspend de corroutinas
     @Insert
     suspend  fun insertOnePedido(mpedi: Pedidos)  //función al objeto mpedi  le asigno la clase Pedidos
     @Update
@@ -17,7 +17,7 @@ interface PedidosDao {
    // suspend fun deleteALLPedido()
 
     @Query ("SELECT * FROM table_pedidos")
-   // fun getAllTaskFromDb(): LiveData<List<Pedidos>> //se envuelve el LIST en LiveData
+    fun getAllTaskFromDb(): LiveData<List<Pedidos>> //se envuelve el LIST en LiveData
 
   //  @Query("SELECT * FROM table_pedidos WHERE id=:mid")//los : es para que sepa que es la variable
     fun getOneTaskByID(mid:Int): LiveData<Pedidos>     //yo le paso un id y la query me trae el un objeto que encuentre
