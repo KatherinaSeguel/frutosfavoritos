@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Pedidos(
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    val id: Int,
+    var id:Int=0,
     var item: String,
     var precio: Int,
     var cantidad:Int)
