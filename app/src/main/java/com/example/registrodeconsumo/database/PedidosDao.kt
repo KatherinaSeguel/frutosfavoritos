@@ -1,7 +1,8 @@
-package com.example.registrodeconsumo
+package com.example.registrodeconsumo.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.registrodeconsumo.database.Pedidos
 
 @Dao
 interface PedidosDao {
