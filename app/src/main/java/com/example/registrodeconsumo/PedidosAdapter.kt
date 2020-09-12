@@ -18,7 +18,7 @@ class PedidosAdapter(val dataList:List<Pedidos>) : RecyclerView.Adapter<PedidosA
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidosViewHolder {
-        val itemView= LayoutInflater.from(parent.context).inflate((R.layout.pedidos_item_list,parent,false))
+        val itemView= LayoutInflater.from(parent.context).inflate(R.layout.pedidos_item_list,parent,false)
 
         return PedidosViewHolder(itemView)
     }
@@ -26,7 +26,9 @@ class PedidosAdapter(val dataList:List<Pedidos>) : RecyclerView.Adapter<PedidosA
 
 
     override fun onBindViewHolder(holder: PedidosViewHolder, position: Int) {
-        TODO("Not yet implemented")
+       val mPedidos: Pedidos = dataList[position]
+        holder.itemId.text
+
     }
 
     override fun getItemCount(): Int {
