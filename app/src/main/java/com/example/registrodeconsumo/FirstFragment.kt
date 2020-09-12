@@ -30,17 +30,6 @@ class FirstFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-      //  val pedidos= Pedidos(0,"Bebidas",1200,1)
-        val pedidos1= Pedidos(4,"Pisco",2000,2)
-        val pedidos2= Pedidos(5,"Papas Fritas",1500,4)
-       // viewModel.insertPedidos(pedidos)
-        viewModel.insertPedidos(pedidos1)
-        viewModel.insertPedidos(pedidos2)
-        //scuchar el liveData del ViewModel
-
-        viewModel.allPedidos.observe(viewLifecycleOwner, Observer {
-            Log.d("datos",it.toString())
-        })
 
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
@@ -48,7 +37,22 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
+        //  val pedidos= Pedidos(0,"Bebidas",1200,1)
+       // val pedidos1= Pedidos(4,"Pisco",2000,2)
+        //val pedidos2= Pedidos(5,"Papas Fritas",1500,4)
+        // viewModel.insertPedidos(pedidos)
+        //viewModel.insertPedidos(pedidos1)
+        //viewModel.insertPedidos(pedidos2)
+        //scuchar el liveData del ViewModel
+
+        viewModel.allPedidos.observe(viewLifecycleOwner, Observer {
+            Log.d("datos",it.toString())
+        })
+
+
+
+
+        view.findViewById<Button>(R.id.boton).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }

@@ -2,18 +2,30 @@ package com.example.registrodeconsumo
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.registrodeconsumo.database.Pedidos
+import kotlinx.android.synthetic.main.fragment_first.view.*
 import kotlinx.android.synthetic.main.pedidos_item_list.view.*
+import kotlinx.android.synthetic.main.pedidos_item_list.view.cantTv
+import kotlinx.android.synthetic.main.pedidos_item_list.view.precioTv
 
-class PedidosAdapter(val dataList:List<Pedidos>) : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
+class PedidosAdapter() : RecyclerView.Adapter<PedidosAdapter.PedidosViewHolder>() {
 
-    inner class PedidosViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-        val pediText= itemView.iditem
-        val pediprecio = itemView.precio
-        val pedicant=itemView.cant
+ private var  dataList= emptyList<Pedidos>()  //genera Listado vacío y así no da problamas de instanciación
+
+    fun updateDataList(mDataList: List<Pedidos>){
+        //este método actualiza la Lista
+        dataList=mDataList
+        notifyDataSetChanged() //cada vez que actualiza el adapter el notifica
+
+    }
+
+    inner class PedidosViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+        val pediText= itemView.idItemTv
+        val pediprecio = itemView.precioTv
+        val pedicant=itemView.cantTv
+        val pedid = itemView.idTv
 
     }
 
@@ -27,7 +39,10 @@ class PedidosAdapter(val dataList:List<Pedidos>) : RecyclerView.Adapter<PedidosA
 
     override fun onBindViewHolder(holder: PedidosViewHolder, position: Int) {
        val mPedidos: Pedidos = dataList[position]
-        holder.itemId.text
+        holder.pediText.text= mPedidos.item
+        holder.pediprecio.text= mPedidos.precio.toString()
+        holder.pedicant.text= mPedidos.precio.toString()
+        holder.pedid.text= mPedidos.id.toString()
 
     }
 
