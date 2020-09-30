@@ -1,4 +1,4 @@
-package com.example.frutos.model
+package com.example.frutos.model.remoto
 
 
 import com.google.gson.annotations.SerializedName
