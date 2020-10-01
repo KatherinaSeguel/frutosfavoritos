@@ -18,11 +18,11 @@ interface DaoDetalleFrutas {
 
 //Selecciona u objeto en específico
     @Query("SELECT * FROM detallefrutos_table WHERE imageUrl=:mid")//los : es para que sepa que es la variable
-    fun getOneTaskByID(mid:String): LiveData<DetalleFrutos> //yo le paso un id y la query me trae el Tfruto u objeto que encuentre
+    fun getOneFrutoskByID(mid:String): LiveData<DetalleFrutos> //yo le paso un id y la query me trae el Tfruto u objeto que encuentre
 
 
 //elimina toda la tabla
     @Query ("Delete FROM detallefrutos_table")
-    suspend fun deleteALLTask()
+    suspend fun deleteALLFrutos()
 
 }
