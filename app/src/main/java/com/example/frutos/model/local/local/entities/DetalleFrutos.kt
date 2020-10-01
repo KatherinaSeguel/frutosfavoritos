@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "detallefrutos_table")
 data class DetalleFrutos(
-    @PrimaryKey val imageUrl: Char,
+    @PrimaryKey val imageUrl: String,
     val botname: String,
     val imageurl: String,
     val othname: String,

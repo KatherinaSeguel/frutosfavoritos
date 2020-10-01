@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.frutos.model.local.local.dao.DaoDetalleFrutas
 import com.example.frutos.model.local.local.entities.DetalleFrutos
 import com.example.frutos.model.remoto.Frutos
+import com.example.frutos.model.remoto.Result
 import com.example.frutos.model.remoto.RetrofitCliente
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,11 +49,11 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
     }
 
   // En este metodo paso de datos o objeto  ,, varieble listadoDeRazas= listadoDeFrutas
-    fun converter(list: String):List<DetalleFrutos>{
+    fun converter(list: List<Result>):List<DetalleFrutos>{
 
         var listadoDeFrutas:MutableList<DetalleFrutos> = mutableListOf<DetalleFrutos>()
         list.map {
-            listadoDeFrutas.add(DetalleFrutos(it))
+            listadoDeFrutas.add(DetalleFrutos(it.imageurl,it.botname,it.imageurl,it.othname,it.tfvname))
         }
         return listadoDeFrutas
     }
