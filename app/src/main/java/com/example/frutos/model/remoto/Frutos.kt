@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Frutos(
     @SerializedName("results")
-    val results: List<Result>,
+    val results: String,
     @SerializedName("tfvcount")
     val tfvcount: Int
 )
