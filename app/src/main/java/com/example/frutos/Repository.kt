@@ -19,7 +19,7 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
 
     //La vieja confiable
     fun getDataFromServer(mfruta:String) {
-        val call = service.getDataFromApi(mfruta)
+        val call = service.getDataFromApi()
         call.enqueue(object : Callback<Frutos> {
 
 
@@ -34,6 +34,8 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
                     //***se cambia***  in 200..299 -> mLiveData.postValue(response.body())
                     in 200..299 -> CoroutineScope(Dispatchers.IO).launch {
                         response.body()?.let {
+
+                            Log.d("Info",it.toString())
                             frutosDao.insertAllFrutosList(converter(it.results))
 
                         }
@@ -49,11 +51,13 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
     }
 
   // En este metodo paso de datos o objeto  ,, varieble listadoDeRazas= listadoDeFrutas
+    //se hace este función si lo que trae la database es distinto a lo que yo quiero en el ROOM
+    //Aquí lo transformo.
     fun converter(list: List<Result>):List<DetalleFrutos>{
 
         var listadoDeFrutas:MutableList<DetalleFrutos> = mutableListOf<DetalleFrutos>()
         list.map {
-            listadoDeFrutas.add(DetalleFrutos(it.imageurl,it.botname,it.imageurl,it.othname,it.tfvname))
+            listadoDeFrutas.add(DetalleFrutos(it.imageurl,it.botname,it.othname,it.tfvname))
         }
         return listadoDeFrutas
     }

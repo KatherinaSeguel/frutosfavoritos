@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitCliente {
     companion object{
 
-        private const val  URL_BASE = "http://tropicalfruitandveg.com/"
+        private const val  URL_BASE = "http://tropicalfruitandveg.com/api/"
 
 
         fun getRetrofitClient(): ApiInterface {

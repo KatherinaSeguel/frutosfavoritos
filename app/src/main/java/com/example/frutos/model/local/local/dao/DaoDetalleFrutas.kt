@@ -1,11 +1,13 @@
 package com.example.frutos.model.local.local.dao
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.frutos.model.local.local.entities.DetalleFrutos
 
+@Dao
 interface DaoDetalleFrutas {
 //inserta todos datos
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 data class DetalleFrutos(
     @PrimaryKey val imageUrl: String,
     val botname: String,
-    val imageurl: String,
     val othname: String,
     val tfvname: String
 )
