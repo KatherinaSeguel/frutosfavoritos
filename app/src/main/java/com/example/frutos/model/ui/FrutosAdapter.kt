@@ -4,18 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.frutos.R
 import com.example.frutos.model.local.local.DataBaseFrutos
+import com.example.frutos.model.local.local.entities.DetalleFrutos
 import kotlinx.android.synthetic.main.item_list_view.view.*
 
 
 class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAdapter.FrutosViewHolder>() { //paso 4 ,Implementar Recycler View
 
-    private  var mData= emptyList<DataBaseFrutos>()  //paso 1
+    private  var mData= emptyList<DetalleFrutos>()  //paso 1
 
     //cada vez que haya un cambio actualiza la lista
 
-    fun updateFrutos(mStringList: List<DataBaseFrutos>) {  //paso 2
+    fun updateFrutos(mStringList: List<DetalleFrutos>) {  //paso 2
 
         mData = mStringList        //paso 2
        // notifyDataSetChanged()
@@ -51,7 +53,8 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
         //llena el xml con los objetos del listado, une los datos con los elementos
 
         val mfrut= mData[position]
-        holder.mitemView.text=mfrut.toString()  ///No sé si????
+        holder.mitemView.text= mfrut.imageUrl
+
 
     }
 
@@ -62,6 +65,6 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
     //esta interface está pasando el dato al primer fragmento
     interface PasstheData{
 
-        fun passTheData(mFrut:DataBaseFrutos)
+        fun passTheData(mFrut:DetalleFrutos)
     }
 }

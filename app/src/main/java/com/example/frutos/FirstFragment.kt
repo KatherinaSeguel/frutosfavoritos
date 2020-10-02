@@ -11,12 +11,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.frutos.model.local.local.entities.DetalleFrutos
+import com.example.frutos.model.ui.FrutosAdapter
 import com.example.frutos.model.ui.FrutosViewModel
+import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(),FrutosAdapter.PasstheData {
+
     //1) Declaro variable del View Model
     lateinit var mViewModel: FrutosViewModel
 
@@ -34,21 +39,27 @@ class FirstFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {  //aquí va el reyclerView
         super.onViewCreated(view, savedInstanceState)
+
+        val mRecyclerView = idrecycler
+        val madapter=FrutosAdapter(this)
+        mRecyclerView.adapter=madapter
+        mRecyclerView.layoutManager= LinearLayoutManager(context) //si fueran una grilla sería GridLayout
 
         //3) observo la finción que retorna del LiveData desde ViewModel
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
-            Log.d("View",it.toString())
-        })
-/*//viene después
-        val mRecyclerView = idrecyclerView
-        val mdapter= FrutosAdapter(this)
-        mRecyclerView.adapter=mdapter
-        mRecyclerView.layoutManager= LinearLayoutManager(context)*/
+           // Log.d("View",it.toString())
+            madapter.updateFrutos(it)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        })
+
+
+         //   findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
+    }
+
+    override fun passTheData(mFrut: DetalleFrutos) {
+        TODO("Not yet implemented")
     }
 }
