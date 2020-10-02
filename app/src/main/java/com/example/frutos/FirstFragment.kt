@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +62,19 @@ class FirstFragment : Fragment(),FrutosAdapter.PasstheData {
     }
 
     override fun passTheData(mFrut: DetalleFrutos) {
-        TODO("Not yet implemented")
+
+        val mBundle=Bundle()
+
+        mBundle.putString("id",mFrut.imageUrl)   //put debe ser int o string según corresponda
+
+
+        //llega el registro a editar
+        Toast.makeText(context,mFrut.imageUrl,Toast.LENGTH_LONG).show()
+
+        //estoy pasando el objeto Bundle, de un fragmento a otro
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,mBundle)
+
     }
-}
+
+
+    }

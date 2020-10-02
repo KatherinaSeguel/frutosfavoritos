@@ -1,8 +1,11 @@
 package com.example.frutos.model.ui
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.frutos.R
@@ -20,7 +23,7 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
     fun updateFrutos(mStringList: List<DetalleFrutos>) {  //paso 2
 
         mData = mStringList        //paso 2
-       // notifyDataSetChanged()
+       notifyDataSetChanged()
     }
 
     inner class FrutosViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{  //paso 3
@@ -62,9 +65,11 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
         //este tienen el total de elementos
         return mData.size
     }
-    //esta interface está pasando el dato al primer fragmento
+
+
+    //esta interface se declara y se ocupa en el primer fragmanto .
     interface PasstheData{
 
         fun passTheData(mFrut:DetalleFrutos)
-    }
+}
 }
