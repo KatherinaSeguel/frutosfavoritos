@@ -63,7 +63,7 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
         }
         return listadoDeFrutas
     }
-
+//esto tampoco lo había hecho
     //segundo fragmanto
     //Este elemento será observado por la vista cuando le pase el Id
     fun getOneFrutoskByID(id:String): LiveData<DetalleFrutos> {

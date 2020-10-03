@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.frutos.model.ui.FrutosViewModel
 import kotlinx.android.synthetic.main.fragment_second.*
 
@@ -53,7 +54,7 @@ class SecondFragment : Fragment() {
             mViewModel.getOneFrutoskByID(it).observe(viewLifecycleOwner,Observer{
                 Log.d("OBJ_LIVE",it.toString())
 
-
+                Glide.with(this).load(it.imageUrl).into(idmageView)
                 idtextView1.setText(it.botname)
 
                 idtextView2.setText(it.tfvname)

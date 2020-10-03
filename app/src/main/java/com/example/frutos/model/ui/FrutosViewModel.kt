@@ -24,6 +24,8 @@ class FrutosViewModel  (application: Application) : AndroidViewModel(application
         return mRepository.mLiveDataPri  //devuelve un Listado de frutas observables
 
     }
+
+    //no lo había hecho
 //segundo fragmanto
     //Este elemento será observado por la vista cuando le pase el Id
     fun getOneFrutoskByID(id:String): LiveData<DetalleFrutos> {
