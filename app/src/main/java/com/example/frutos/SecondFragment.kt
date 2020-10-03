@@ -26,7 +26,7 @@ class SecondFragment : Fragment() {
         mViewModel =
             ViewModelProvider(this).get(FrutosViewModel::class.java) //variable representa VM
         arguments?.let {
-            idfrutos = it.getString("id")
+            idfrutos = it.getString("imageUrl")   //se pasa la key de la clase
         }
     }
 
@@ -48,7 +48,9 @@ class SecondFragment : Fragment() {
         idfrutos?.let {
 
             //la función debe devolver LiveData
-            mViewModel.getOnePedidosByID(it).observe(viewLifecycleOwner,Observer{
+            mViewModel.getOneFrutoskByID(it).observe(viewLifecycleOwner,Observer{
+                Log.d("OBJ_LIVE",it.botname)
+
                 idtextView1.setText(it.botname)
                 idtextView2.setText(it.tfvname)
             })
