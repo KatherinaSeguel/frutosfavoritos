@@ -15,7 +15,8 @@ import retrofit2.Response
 
 class Repository (private val frutosDao: DaoDetalleFrutas) {
     private val service = RetrofitCliente.getRetrofitClient()
-    val mLiveData = frutosDao.getAllFrutosList()
+    val mLiveData = frutosDao.getOneFrutoskByID(mid = String())
+    val mLiveDataPri=frutosDao.getAllFrutosList()
 
     //La vieja confiable
     fun getDataFromServer(mfruta:String) {

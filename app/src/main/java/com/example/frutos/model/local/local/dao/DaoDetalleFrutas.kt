@@ -19,6 +19,7 @@ interface DaoDetalleFrutas {
     fun getAllFrutosList(): LiveData<List<DetalleFrutos>>
 
 //Selecciona u objeto en específico
+//va al DAO y trae el objeto encontrado por ID envuelto en LiveData
     @Query("SELECT * FROM detallefrutos_table WHERE imageUrl=:mid")//los : es para que sepa que es la variable
     fun getOneFrutoskByID(mid:String): LiveData<DetalleFrutos> //yo le paso un id y la query me trae el Tfruto u objeto que encuentre
 
@@ -26,5 +27,8 @@ interface DaoDetalleFrutas {
 //elimina toda la tabla
     @Query ("Delete FROM detallefrutos_table")
     suspend fun deleteALLFrutos()
+
+
+
 
 }

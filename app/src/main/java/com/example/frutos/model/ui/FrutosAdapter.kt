@@ -1,15 +1,10 @@
 package com.example.frutos.model.ui
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.frutos.R
-import com.example.frutos.model.local.local.DataBaseFrutos
 import com.example.frutos.model.local.local.entities.DetalleFrutos
 import kotlinx.android.synthetic.main.item_list_view.view.*
 

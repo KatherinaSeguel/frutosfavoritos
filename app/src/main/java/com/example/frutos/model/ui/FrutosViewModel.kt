@@ -19,9 +19,15 @@ class FrutosViewModel  (application: Application) : AndroidViewModel(application
         //indico el método que traerá el repository
         mRepository.getDataFromServer(mfruta = String())
     }
-
+//primer fragmento
     fun exposeLiveDataFromServer(): LiveData<List<DetalleFrutos>> {
-        return mRepository.mLiveData  //devuelve un Listado de frutas observables
+        return mRepository.mLiveDataPri  //devuelve un Listado de frutas observables
+
+    }
+//segundo fragmanto
+    //Este elemento será observado por la vista cuando le pase el Id
+    fun getOnePedidosByID(id:String): LiveData<DetalleFrutos> {
+        return mRepository.mLiveData
     }
 
 
