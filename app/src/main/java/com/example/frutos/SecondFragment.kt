@@ -47,18 +47,17 @@ class SecondFragment : Fragment() {
 
         idfrutos?.let {
 
-           mViewModel.getOnePedidosByID(it).observe(viewLifecycleOwner, Observer { //la función debe devolver LiveData
-              // Log.d ("OBJ LIV",it.toString())
+            //la función debe devolver LiveData
+            mViewModel.getOnePedidosByID(it).observe(viewLifecycleOwner,Observer{
+                idtextView1.setText(it.botname)
+                idtextView2.setText(it.tfvname)
+            })
 
-              idtextView1.setText(it.botname)
-               idtextView2.setText(it.imageUrl)
-           })
         }
 
-
-
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
+        button_second.setOnClickListener{
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
     }
 }
