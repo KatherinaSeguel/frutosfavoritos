@@ -1,6 +1,7 @@
 package com.example.frutos
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.example.frutos.model.local.local.dao.DaoDetalleFrutas
 import com.example.frutos.model.local.local.entities.DetalleFrutos
 import com.example.frutos.model.remoto.Frutos
@@ -62,5 +63,12 @@ class Repository (private val frutosDao: DaoDetalleFrutas) {
         }
         return listadoDeFrutas
     }
+
+    //segundo fragmanto
+    //Este elemento será observado por la vista cuando le pase el Id
+    fun getOneFrutoskByID(id:String): LiveData<DetalleFrutos> {
+        return frutosDao.getOneFrutoskByID(id)
+    }
+
 
 }

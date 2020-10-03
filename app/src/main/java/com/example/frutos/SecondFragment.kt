@@ -19,14 +19,16 @@ import kotlinx.android.synthetic.main.fragment_second.*
 class SecondFragment : Fragment() {
 
     lateinit var mViewModel: FrutosViewModel
-    private var idfrutos: String? = null
+    var idfrutos: String? = null   //saqué private
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         mViewModel =
             ViewModelProvider(this).get(FrutosViewModel::class.java) //variable representa VM
         arguments?.let {
-            idfrutos = it.getString("imageUrl")   //se pasa la key de la clase
+            idfrutos = it.getString("id","")   //se pasa la key de la clase
+            Log.d("LET",idfrutos.toString())
         }
     }
 
@@ -46,13 +48,17 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         idfrutos?.let {
-
+            Log.d("ingresé al LET","")
             //la función debe devolver LiveData
             mViewModel.getOneFrutoskByID(it).observe(viewLifecycleOwner,Observer{
-                Log.d("OBJ_LIVE",it.botname)
+                Log.d("OBJ_LIVE",it.toString())
+
 
                 idtextView1.setText(it.botname)
+
                 idtextView2.setText(it.tfvname)
+
+                Log.d("seg",it.imageUrl)
             })
 
         }

@@ -39,7 +39,8 @@
         app:layout_constraintBottom_toTopOf="@+id/idtextView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idmageView" />
+        app:layout_constraintTop_toBottomOf="@+id/idmageView"
+        tools:text="hhh" />
 
     <TextView
         android:id="@+id/idtextView2"
@@ -51,5 +52,6 @@
         app:layout_constraintBottom_toTopOf="@+id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/idtextView1"
+        tools:text="gggggg" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ class FrutosViewModel  (application: Application) : AndroidViewModel(application
 //segundo fragmanto
     //Este elemento será observado por la vista cuando le pase el Id
     fun getOneFrutoskByID(id:String): LiveData<DetalleFrutos> {
-        return mRepository.mLiveData
+        return mRepository.getOneFrutoskByID(id)
     }
 
 
