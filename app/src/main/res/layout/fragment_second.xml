@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C5ED97"
+    android:backgroundTint="#C5ED97"
     tools:context=".SecondFragment">
 
     <Button
@@ -19,11 +21,12 @@
 
     <ImageView
         android:id="@+id/idmageView"
-        android:layout_width="178dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="104dp"
+        android:layout_width="250dp"
+        android:layout_height="210dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="37dp"
         android:layout_marginBottom="45dp"
+        android:background="@drawable/stylo_borde_textview"
         app:layout_constraintBottom_toTopOf="@+id/idtextView1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,27 +34,29 @@
 
     <TextView
         android:id="@+id/idtextView1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="249dp"
+        android:layout_height="77dp"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/stylo_borde_textview"
+        android:backgroundTint="#BAB2B2"
         app:layout_constraintBottom_toTopOf="@+id/idtextView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idmageView"
-        tools:text="hhh" />
+        app:layout_constraintTop_toBottomOf="@+id/idmageView" />
 
     <TextView
         android:id="@+id/idtextView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="249dp"
+        android:layout_height="77dp"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/stylo_borde_textview"
+        android:backgroundTint="#BAB2B2"
         app:layout_constraintBottom_toTopOf="@+id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtextView1"
-        tools:text="gggggg" />
+        app:layout_constraintTop_toBottomOf="@+id/idtextView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,7 +51,7 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
         //llena el xml con los objetos del listado, une los datos con los elementos
 
         val mfrut= mData[position]
-        holder.mitemView.text= mfrut.imageUrl
+        holder.mitemView.text= mfrut.tfvname
 
 
     }

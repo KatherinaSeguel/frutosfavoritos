@@ -65,7 +65,7 @@ class FirstFragment : Fragment(),FrutosAdapter.PasstheData {
 
 
         //llega el registro a editar
-        Toast.makeText(context,mFrut.imageUrl,Toast.LENGTH_LONG).show()
+        Toast.makeText(context,mFrut.botname,Toast.LENGTH_LONG).show()
 
         //estoy pasando el objeto Bundle, de un fragmento a otro
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment,mBundle)
