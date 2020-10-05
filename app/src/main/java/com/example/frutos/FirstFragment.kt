@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.frutos.model.local.local.entities.DetalleFrutos
 import com.example.frutos.model.ui.FrutosAdapter
@@ -43,7 +45,10 @@ class FirstFragment : Fragment(),FrutosAdapter.PasstheData {
         val mRecyclerView = idrecycler
         val madapter=FrutosAdapter(this)
         mRecyclerView.adapter=madapter
+        mRecyclerView.setHasFixedSize(true) //para que tengan el mismo tamaño
         mRecyclerView.layoutManager= LinearLayoutManager(context) //si fueran una grilla sería GridLayout
+
+
 
         //3) observo la finción que retorna del LiveData desde ViewModel
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {

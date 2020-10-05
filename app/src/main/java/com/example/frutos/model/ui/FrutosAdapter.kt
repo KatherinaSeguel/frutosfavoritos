@@ -1,5 +1,6 @@
 package com.example.frutos.model.ui
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,7 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
 
         val mitemView = itemView.idNombreFruta  //texview que está en ItemLIst
         val itemView = itemView.setOnClickListener(this)  // Cuando se hace click en el texto
-
+        val imgfav = itemView.imgFavorito
 
         override fun onClick(p0: View?) {    //paso 5
             mPasstheData.passTheData(mData[adapterPosition])
@@ -53,6 +54,19 @@ class FrutosAdapter (var mPasstheData:PasstheData):RecyclerView.Adapter<FrutosAd
         val mfrut= mData[position]
         holder.mitemView.text= mfrut.tfvname
 
+        holder.imgfav.setTag("No Select")
+            holder.imgfav.setOnClickListener(object : View.OnClickListener{
+                override fun onClick(p0: View?) {
+                   if (holder.imgfav.getTag()=="No Select" ){
+                       holder.imgfav.setColorFilter(Color.RED)
+                       holder.imgfav.setTag("Select")
+                   }else{
+                       holder.imgfav.setColorFilter(Color.BLACK)
+                       holder.imgfav.setTag("No Select")
+                   }
+                }
+
+            })
 
     }
 
