@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#C5ED97">
+    android:background="#C5ED97"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/idNombreFruta"
@@ -28,7 +29,7 @@
 
     <ImageButton
         android:id="@+id/imgFavorito"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="40dp"
         android:background="#C5ED97"
         app:layout_constraintBottom_toBottomOf="parent"
