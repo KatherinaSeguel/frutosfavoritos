@@ -1,5 +1,10 @@
 <application>
   <component name="ParameterNameHintsSettings">
+    <blacklists>
+      <blacklist language="Kotlin">
+        <added pattern="android.os.Bundle.getInt(key,defaultValue)" />
+      </blacklist>
+    </blacklists>
     <option id="SHOW_PROPERTY_HINT" value="true" />
   </component>
 </application>
